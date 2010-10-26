@@ -23,7 +23,7 @@ def itemW
   def dimensionW
   StringBuilder sb = new StringBuilder()
 
-//response.contentType = "text/csv"
+//
 
 //sout << "asin,shippinW,dimensionW,itemW"
 for (stuff in entities ) {
@@ -32,5 +32,6 @@ for (stuff in entities ) {
    sb <<   ent.asin + "," + ent.shippinW + "," + ent.dimensionW + "," + ent.itemW + "\n"
     
 }
-
-esponse.outputStream << sb
+response.setHeader("Content-disposition", "attachment;filename=asin-weight.csv")
+response.contentType = "text/csv"
+response.outputStream << sb
